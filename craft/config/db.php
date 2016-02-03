@@ -11,12 +11,11 @@
 
 $CLEARDB_URL = parse_url(getenv("CLEARDB_URI"));
 
-$conn = new mysqli(
- $CLEARDB_URL['host'],
- getenv('CLEARDB_USERNAME'),
- getenv('CLEARDB_PASSWORD'),
- getenv('CLEARDB_NAME'),
- getenv('CLEARDB_PORT')
+return array(
+	'server' => 'us-cdbr-iron-east-03.cleardb.net',
+	'port' => '3306',
+	'user' => 'b9b435def22196',
+	'password' => '6474105d',
 );
 
 ?>
