@@ -7,10 +7,10 @@
  *
  * If you want to change any of these settings, copy it into craft/config/db.php, and make your change there.
  */
-
+/** mysql://b9b435def22196:6474105d@us-cdbr-iron-east-03.cleardb.net/heroku_52495e0f62a7de3?reconnect=true */
 $url=parse_url(getenv(“CLEARDB_DATABASE_URL”));
 	return array(
-	‘server’ => $url[“host”],
+	‘server’ => 'us-cdbr-iron-east-03.cleardb.net',
 	‘user’ => 'b9b435def22196',
 	‘password’ => '6474105d',
 	‘database’ => 'heroku_52495e0f62a7de3',
