@@ -1,33 +1,150 @@
-{#
- # Homepage template
- # ---------------
- #
- # When this template gets loaded, it will be because someone has accessed
- # http://yoursite.com/ (without any URI). Craft checks to see if you have
- # a Single section set to be the Homepage (as you do, by default), and
- # loads the section’s Template (this file). A special ‘entry’ variable
- # will already be set for you, assigned to the Homepage entry.
- #
- # It's worth noting that even if you didn't have a Homepage Single section,
- # as long as this template remains at craft/templates/index.html, it
- # would still be the one to get loaded when accessing http://yoursite.com/,
- # albeit without an ‘entry’ variable already set for you.
- #
- # See this page for more details on how Craft routes requests:
- # http://craftcms.com/docs/routing
- #}
-
-{% extends "_layout" %}
+{% extends "_layouts/base.html" %}
 
 {% block content %}
-	<h1>{{ entry.title }}</h1>
+<div class="main full ng-scope" ng-view="" autoscroll="true">
+<!-- ngInclude:  -->
+<div class="content full ng-scope">
+	<div class="hero home full ng-isolate-scope" parallax-background="" parallax-ratio="0.2" style="background-position: 50% 16px;"><div ng-transclude="">
+		<div class="hero-overlay full ng-scope">
+			<div class="slideshow full ng-isolate-scope" slideshow="healthscore">
+				<div class="wrapper middle">
+				<!-- ngRepeat: slide in slides -->
+					<div class="slide white-txt full ng-scope" ng-repeat="slide in slides" ng-show="slide.visible" ng-animate="animate" ng-swipe-left="next()" ng-swipe-right="prev()">
+						<div class="full pad center">
+							<h1>{{ entry.homepageHeader }}</h1>
+						</div>
+						<a class="half pad" ng-click="next()">
+							<img class="full healthscore middle" title="The Network Score℠" src="assets/icon_networkscore.png">
+						</a>
+						<div class="half pad white-txt">
+							<h2 class="ng-binding">{{ entry.slideHeader }}</h2>
+							<p>
+								<i>
+									<!-- ngRepeat: question in slide.questions -->
+									<span ng-repeat="question in slide.questions" class="ng-binding ng-scope">{{ entry.slideQuestion }}<br></span><!-- end ngRepeat: question in slide.questions -->
+								</i>
+							</p>
+							<p class="ng-binding">{{ entry.slideDescription }}</p>
+							<a class="button ng-scope" ng-controller="SalesforceController" ng-click="popover()">{{ entry.scoreLabelText }}</a>
+						</div>
+					</div>
+		<!-- end ngRepeat: slide in slides -->
+		<div class="slide white-txt full ng-scope ng-hide" ng-repeat="slide in slides" ng-show="slide.visible" ng-animate="animate" ng-swipe-left="next()" ng-swipe-right="prev()">
+			<div class="full pad center">
+				<h1>{{ entry.homepageHeader }}</h1>
+			</div>
+			<a class="half pad" ng-click="next()">
+				<img class="full healthscore middle" title="Leadtime" src="assets/icon_leadtime.png">
+			</a>
+			<div class="half pad white-txt">
+				<h2 class="ng-binding">Leadtime</h2>
+				<p>
+					<i>
+						<!-- ngRepeat: question in slide.questions -->
+						<span ng-repeat="question in slide.questions" class="ng-binding ng-scope">"Which components will prevent me from shipping product?"<br></span><!-- end ngRepeat: question in slide.questions -->
+					</i>
+				</p>
+				<p class="ng-binding">Leadtime scoring evaluates and simulates the impact of component decisions before committing... that’s transparency.</p>
+				<a class="button ng-scope" ng-controller="SalesforceController" ng-click="popover()">What's your score?</a>
+			</div>
+		</div>
+		<!-- end ngRepeat: slide in slides -->
+		<div class="slide white-txt full ng-scope ng-hide" ng-repeat="slide in slides" ng-show="slide.visible" ng-animate="animate" ng-swipe-left="next()" ng-swipe-right="prev()">
+			<div class="full pad center">
+				<h1>{{ entry.homepageHeader }}</h1>
+			</div>
+			<a class="half pad" ng-click="next()">
+				<img class="full healthscore middle" title="Cost" src="assets/icon_cost.png">
+			</a>
+			<div class="half pad white-txt">
+				<h2 class="ng-binding">Cost</h2>
+				<p>
+					<i>
+						<!-- ngRepeat: question in slide.questions --><span ng-repeat="question in slide.questions" class="ng-binding ng-scope">"Are my component prices market competitive?"<br></span><!-- end ngRepeat: question in slide.questions --><span ng-repeat="question in slide.questions" class="ng-binding ng-scope">" What should I be paying based on future demand?"<br></span><!-- end ngRepeat: question in slide.questions -->
+					</i>
+				</p>
+				<p class="ng-binding">Cost scoring measures the variance between supplier-provided costs vs the best available market cost... that’s transparency.</p>
+				<a class="button ng-scope" ng-controller="SalesforceController" ng-click="popover()">What's your score?</a>
+			</div>
+		</div><!-- end ngRepeat: slide in slides --><div class="slide white-txt full ng-scope ng-hide" ng-repeat="slide in slides" ng-show="slide.visible" ng-animate="animate" ng-swipe-left="next()" ng-swipe-right="prev()">
+			<div class="full pad center">
+				<h1>Transparency meets supply chain</h1>
+			</div>
+			<a class="half pad" ng-click="next()">
+				<img class="full healthscore middle" title="Compliance" src="assets/icon_compliance.png">
+			</a>
+			<div class="half pad white-txt">
+				<h2 class="ng-binding">Compliance</h2>
+				<p>
+					<i>
+						<!-- ngRepeat: question in slide.questions --><span ng-repeat="question in slide.questions" class="ng-binding ng-scope">"Are all my products compliant to current regulations?"<br></span><!-- end ngRepeat: question in slide.questions --><span ng-repeat="question in slide.questions" class="ng-binding ng-scope">"Am I prepared for new regulations?"<br></span><!-- end ngRepeat: question in slide.questions -->
+					</i>
+				</p>
+				<p class="ng-binding">Compliance scoring measures the ability of product data to support rigorous examination of import/export compliance... that’s transparency.</p>
+				<a class="button ng-scope" ng-controller="SalesforceController" ng-click="popover()">What's your score?</a>
+			</div>
+		</div><!-- end ngRepeat: slide in slides --><div class="slide white-txt full ng-scope ng-hide" ng-repeat="slide in slides" ng-show="slide.visible" ng-animate="animate" ng-swipe-left="next()" ng-swipe-right="prev()">
+			<div class="full pad center">
+				<h1>Transparency meets supply chain</h1>
+			</div>
+			<a class="half pad" ng-click="next()">
+				<img class="full healthscore middle" title="Risk" src="assets/icon_risk.png">
+			</a>
+			<div class="half pad white-txt">
+				<h2 class="ng-binding">Risk</h2>
+				<p>
+					<i>
+						<!-- ngRepeat: question in slide.questions --><span ng-repeat="question in slide.questions" class="ng-binding ng-scope">"What is my sole source component status by product?"<br></span><!-- end ngRepeat: question in slide.questions --><span ng-repeat="question in slide.questions" class="ng-binding ng-scope">"Do I have any components going end of life?<br></span><!-- end ngRepeat: question in slide.questions --><span ng-repeat="question in slide.questions" class="ng-binding ng-scope">If yes, which ones?"<br></span><!-- end ngRepeat: question in slide.questions -->
+					</i>
+				</p>
+				<p class="ng-binding">Risk scoring measures how a component is sourced, proximity to manufacturing locations, supplier performance... that’s transparency.</p>
+				<a class="button ng-scope" ng-controller="SalesforceController" ng-click="popover()">What's your score?</a>
+			</div>
+		</div><!-- end ngRepeat: slide in slides -->
+	</div>
+	<button id="prev" class="slidenav" ng-click="prev()"><span class="icon-arrow_left"></span></button>
+	<button id="next" class="slidenav" ng-click="next()"><span class="icon-arrow_right"></span></button>
+</div>
 
-	{{ entry.body }}
 
-	<h2>Recent News</h2>
-	<ul>
-		{% for entry in craft.entries.section('news').limit(5).find() %}
-			<li><a href="{{ entry.url }}">{{ entry.title }}</a></li>
+<div class="white-bg full">
+	<div class="wrapper">
+		<div class="full pad">
+			<h3 class="center">Paradata delivers</h3>
+
+			{% for block in entry.threeStepProcess.type('processes') %}
+			<div class="third pad center">
+				<h4 class="bubble secondary-bg white-txt">{{ block.numberBubble }}</h4>
+				<p>{{ block.processDescription }}
+					<br>
+					<br>
+					<br class="desktop tablet">
+					<a href="http://paradata.io/#/solutions#1">{{ block.linkText }}</a>
+				</p>
+			</div>
+			{% endfor %}
+		</div>
+	</div>
+</div>
+
+<div class="lightgray-bg intro full">
+	<div class="wrapper middle">
+		{% for block in entry.promoCoffee.type('coffeeBlock') %}
+			<div class="full">
+				<div class="half pad">
+					<h3>{{ block.header }}</h3>
+					<h4>Get a complimentary gourmet coffee gift card</h4>
+					<p>
+						{{ block.offerDescription }}<br>
+						<img class="inline-icon" src="./images/icons/icon_networkscore.png" alt="Paradata Network Score" title="Paradata Network Score"> is on us!
+					</p>
+					<a href="" class="button-body ng-scope" ng-controller="SalesforceController" ng-click="popover()">{{ block.demoLabelText }}</a>
+				</div>
+				<div class="half pad">
+					<img class="full" src="./images/coffee_cups.png" alt="Free gourmet coffee gift card" title="Free gourmet coffee gift card!">
+				</div>
+			</div>
 		{% endfor %}
-	</ul>
+	</div>
+</div>
 {% endblock %}

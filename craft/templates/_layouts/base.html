@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html ng-app="paraData">
+	<head>
+		<title>Paradata | Hackathon</title>
+		<!-- Styles -->
+		<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Quicksand:400,300,700">
+		<link type="text/css" rel="stylesheet" href="css/responsive.css">
+		<link type="text/css" rel="stylesheet" href="css/styles.css">
+		<link rel="stylesheet" type="text/css" href="css/paradata.css">
+		<!-- External Script Libraries -->
+		<script type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/angularjs/1.2.22/angular.js'></script>
+		<script type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/angularjs/1.2.22/angular-route.js'></script>
+		<script type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/angularjs/1.2.22/angular-resource.js'></script>
+		<script type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/angularjs/1.2.22/angular-animate.js'></script>
+		<script type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/angularjs/1.2.22/angular-touch.js'></script>
+		<script type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js'></script>
+		<!-- Base Scripts -->
+		<script type='text/javascript' src='assets/js/app.js'></script>
+		<script type='text/javascript' src='assets/js/routes.js'></script>
+		<script type='text/javascript' src='assets/js/parallax/parallax.min.js'></script>
+		<script type="text/javascript" src="assets/js/angular-parallax.js"></script>
+		<!-- Core Module Scripts -->
+		<script type='text/javascript' src='assets/js/client.js'></script>
+		<script type='text/javascript' src='assets/js/client-ctrl.js'></script>
+		<script type='text/javascript' src='assets/js/sitemap.js'></script>
+		<script type='text/javascript' src='assets/js/sitemap-ctrl.js'></script>
+		<script type='text/javascript' src='assets/js/contact-drv.js'></script>
+		<script type='text/javascript' src='assets/js/copyright-drv.js'></script>
+		<script type="text/javascript" src="assets/js/hydra-drv.js"></script>
+		<script type="text/javascript" src="assets/js/hydra-ctrl.js"></script>
+		<script type='text/javascript' src='assets/modules/footer/footer-drv.js'></script>
+		<script type='text/javascript' src='assets/modules/header/header-drv.js'></script>
+		<script type='text/javascript' src='assets/modules/nav/nav-drv.js'></script>
+		<script type='text/javascript' src='assets/modules/social/social-drv.js'></script>
+		<!-- Additional Module Scripts -->
+		<script type='text/javascript' src='assets/modules/slides/slides.js'></script>
+		<script type='text/javascript' src='assets/modules/slides/slides-srv.js'></script>
+		<script type='text/javascript' src='assets/modules/slides/slides-ctrl.js'></script>
+		<script type='text/javascript' src='assets/modules/slides/slides-drv.js'></script>
+	</head>
+<!--
+	<body>
+		<appheader class='full'></appheader>
+		<div id="content" class='main full' ng-view></div>
+		<appfooter class='full'></appfooter>
+	</body>
+-->
+<body>
+		<header class="darkgray-bg texture-bg full">
+			<nav class="wrapper middle">
+				<div class="logo">
+					<a href="#"></a>
+				</div>
+				<ul>
+					<li ng-repeat="navitem in sitemap.header.navitems">
+						<a href="{{navitem.link}}">Solutions</a>
+					</li>
+					<li ng-repeat="navitem in sitemap.header.navitems">
+						<a href="{{navitem.link}}">Pricing</a>
+					</li>
+					<li class="nav-cta">
+						<a href="#">Log in</a>
+					</li>
+				</ul>
+			</nav>
+		</header>
+
+
+  {% block content %}Content goes here{% endblock %}
+
+
+		<footer class="full">
+			<div class="wrapper middle">
+				<div class="half pad">
+					<nav>
+						<p>
+							<a href="{{navitem.link}}" ng-repeat="navitem in sitemap.footer.navitems">Company</a><br>
+							<a href="{{navitem.link}}">Careers</a><br>
+						</p>
+					</nav>
+					<div class="social">
+						<p>Follow Us:</p>
+						<ul>
+							{% for image in footer.followUsIcons %}
+								<li ng-repeat="social in socials">
+									<a href="" target="_blank">
+										<img src="{{ image.url }}" alt="{{ image.title }}">
+									</a>
+								</li>
+							{% endfor %}
+						</ul>
+					</div>
+				</div>
+				<div class="contact half pad">
+					<p>Paradata</p>
+					<p>
+						<a href="https://goo.gl/maps/4d6BKC2FUJE2" target="_blank">
+							{{ footer.addressLine1 }}<br>
+							{{ footer.addressLine2 }}
+						</a>
+					</p>
+					<p>
+						<a href="tel:1-408-791-2070">{{ footer.phoneNumber }}</a><br>
+						<a href="mailto:info@paradata.io">{{ footer.email }}</a>
+					</p>
+				</div>
+			</div>
+			<div class="darkgray-bg center full">
+				<h6>&copy; {{ footer.copyrightText }}</h6>
+			</div>
+		</footer>
+	</body>
+</html>
