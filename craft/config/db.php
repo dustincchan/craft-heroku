@@ -8,9 +8,15 @@
  * If you want to change any of these settings, copy it into craft/config/db.php, and make your change there.
  */
 /** mysql://b9b435def22196:6474105d@us-cdbr-iron-east-03.cleardb.net/heroku_52495e0f62a7de3?reconnect=true */
-$url = parse_url(getenv("CLEARDB_DATABASE_URL"));
-$host = $url["host"];
-$username = $url["user"];
-$password = $url["pass"];
-$database = substr($url["path"], 1);
-$connection = new mysqli($server, $username, $password, $db);
+
+$CLEARDB_URL = parse_url(getenv("CLEARDB_URI"));
+
+$conn = new mysqli(
+ $CLEARDB_URL['host'],
+ getenv('CLEARDB_USERNAME'),
+ getenv('CLEARDB_PASSWORD'),
+ getenv('CLEARDB_NAME'),
+ getenv('CLEARDB_PORT')
+);
+
+?>
