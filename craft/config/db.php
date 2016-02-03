@@ -9,7 +9,7 @@
  */
 /** mysql://b9b435def22196:6474105d@us-cdbr-iron-east-03.cleardb.net/heroku_52495e0f62a7de3?reconnect=true */
 $url = parse_url(getenv("CLEARDB_DATABASE_URL"));
-$server = $url["host"];
+$server = 'us-cdbr-iron-east-03-8130409.us-east-1.elb.amazonaws.com';
 $username = $url["user"];
 $password = $url["pass"];
 $db = substr($url["path"], 1);
