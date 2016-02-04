@@ -254,8 +254,13 @@ footer .social li a img {
 }
 
 /*CSS added to update page, mostly extracted from the paradata.io homepage.*/
+img.half.pad {
+    position: relative;
+    top: 70px;
+}
+
 li {
-    margin: 0 0 -32px 0;
+    margin: 0 0 -25px 0;
 }
 
 .videoplayer {
