@@ -8,5 +8,5 @@
  */
 
 return array(
-
+  'maxUploadFileSize' => 33554432
 );
