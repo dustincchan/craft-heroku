@@ -6,8 +6,8 @@
 		<div class="hero-overlay full ng-scope">
 			<div class="wrapper">
 				<div class="full pad">
-					<h1>Paradata Solutions</h1>
-					<h2>Bringing strategic value to the supply chain</h2>
+					<h1>{{ entry.firstHeader }}</h1>
+					<h2>{{ entry.firstSubheader }}</h2>
 				</div>
 			</div>
 		</div>
@@ -15,79 +15,38 @@
 	<div class="white-bg full">
 		<div class="wrapper">
 			<div class="full pad">
-				<h3>Paradata enables supply chain optimization</h3>
-				<p>Paradata provides a state-of-the-art enterprise SaaS solution for organizing unstructured and structured data, as well as integrating public data, private data, and dark data, so businesses can increase operating profits. Our solution is comprised of a suite of unique applications that provide deep predictive and optimization algorithms, a powerful platform with data-centered integrated infrastructure, and a suite of common services to organize and harmonize datasets.</p>
+				<h3>{{ entry.secondHeader }}</h3>
+				<p>{{ entry.secondSubheader }}</p>
 			</div>
 		</div>
 	</div>
 	<div class="lightgray-bg full">
 		<div class="wrapper middle pad">
-			<h3 class="center">How does Paradata work?</h3>
+			<h3 class="center">{{ entry.videoHeader }}</h3>
 			<video class="videoplayer middle" frameborder="0" poster="assets/images/graphics/intro-video-cover.png" controls="">
 				<source src="assets/videos/paradata_solutions-hd.mp4" type="video/mp4">
 				Your browser does not support HTML5 video. Please download a modern browser, like <a href="https://www.google.com/chrome/browser/desktop/">Google Chrome</a>.
 			</video>
 		</div>
 	</div>
-	<div class="white-bg full">
-		<div class="wrapper">
-			<div id="1" class="anchor"></div>
-			<div class="feature full">
-				<div class="half pad">
-					<div class="full pad center">
-						<h3 class="bubble secondary-bg white-txt">1</h3>
+	{% for block in entry.solutions.type('solutions') %}
+		<div class="white-bg full">
+			<div class="wrapper">
+				<div id="1" class="anchor"></div>
+				<div class="feature full">
+					<div class="half pad">
+						<div class="full pad center">
+							<h3 class="bubble secondary-bg white-txt">{{ block.numberBubble }}</h3>
+						</div>
+						<div class="full pad">
+							{{ block.solutionList }}
+						</div>
 					</div>
-					<ul class="full pad">
-						<li><p>Upload your bill of materials and approved manufacturers list (AML)</p></li>
-						<li><p>Enhance your AML with detailed manufacturers part information and proposed alternate parts</p></li>
-						<li><p>Understand scenario analysis for cost, lead-time, and more</p></li>
-						<li><p>Review sourcing details and understand the confidence in provided data</p></li>
-					</ul>
+					<a href="http://paradata.io/assets/images/graphics/solutions1.png" target="_blank">
+						<img class="half pad" src="./images/graphics/app_preview_bom_advantage.png">
+					</a>
 				</div>
-				<a href="http://paradata.io/assets/images/graphics/solutions1.png" target="_blank">
-					<img class="half pad" src="./images/graphics/app_preview_bom_advantage.png">
-				</a>
 			</div>
 		</div>
-	</div>
-	<div class="lightgray-bg full">
-		<div class="wrapper">
-			<div id="2" class="anchor"></div>
-			<div class="feature full">
-				<div class="half pad">
-					<div class="full pad center">
-						<h3 class="bubble secondary-bg white-txt">2</h3>
-					</div>
-					<ul class="full pad">
-						<li><p>Upload part cost information to generate a costed Bill of Materials</p></li>
-						<li><p>Compare publicly provided prices with private prices established internally or from an outsource partner</p></li>
-						<li><p>Understand the purchase price variance and quickly review parts with the largest variance and the greatest potential for cost reduction</p></li>
-					</ul>
-				</div>
-				<a href="http://paradata.io/assets/images/graphics/solutions2.png" target="_blank">
-					<img class="half pad" src="./images/graphics/app_preview_price_guardian.png">
-				</a>
-			</div>
-		</div>
-	</div>
-	<div class="white-bg full">
-		<div class="wrapper">
-			<div id="3" class="anchor"></div>
-			<div class="feature full">
-				<div class="half pad">
-					<div class="full pad center">
-						<h3 class="bubble secondary-bg white-txt">3</h3>
-					</div>
-					<ul class="full pad">
-						<li><p>Search Paradata's Parts Catalog to find detailed part information and specifications</p></li>
-						<li><p>Define datasets or data attributes that you are interested in and let the harvesting and Trusted Discovery Engine do their work</p></li>
-						<li><p>Tune the engine rules to continuously improve the output based on needs</p></li>
-					</ul>
-				</div>
-				<a href="http://paradata.io/assets/images/graphics/solutions3.png" target="_blank">
-					<img class="half pad" src="./images/graphics/app_preview_catalog_optimizer.png">
-				</a>
-			</div>
-		</div>
-	</div>
+	{% endfor %}
 {% endblock %}
