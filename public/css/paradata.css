@@ -254,6 +254,16 @@ footer .social li a img {
 }
 
 /*CSS added to update page, mostly extracted from the paradata.io homepage.*/
+li {
+    margin: 0 0 -32px 0;
+}
+
+.videoplayer {
+    width: 100%;
+    max-width: 500px;
+    height: auto;
+}
+
 .white-bg.full {
     background: white;
     color: black;
